@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>EaselJS demo: Dragging</title>
+	<link href="../_shared/demo.css" rel="stylesheet" type="text/css">
+	<script src="http://code.createjs.com/easeljs-0.7.0.min.js"></script>
+	<script>
+		var stage, output;
+		
+		function init() {
+			stage = new createjs.Stage("demoCanvas");
+			
+			// this lets our drag continue to track the mouse even when it leaves the canvas:
+			// play with commenting this out to see the difference.
+			//마우스가 컨테이너 밖을 벗어나더라도 제어가능
+			stage.mouseMoveOutside = true; 
+			
+			//도형
+			var circle = new createjs.Shape();
+			circle.graphics.beginFill("red").drawCircle(0, 0, 100);
+			
+			//텍스트
+			var label = new createjs.Text("drag me", "bold 14px Arial", "#FFFFFF");
+			label.textAlign = "center";
+			label.y = -7;
+			
+			//컨테이너
+			var dragger = new createjs.Container();
+			dragger.x = dragger.y = 100;
+			dragger.addChild(circle, label);
+			stage.addChild(dragger);
+			
+			dragger.on("pressmove",function(evt) {
+				// currentTarget will be the container that the event listener was added to:
+				evt.currentTarget.x = evt.stageX;
+				evt.currentTarget.y = evt.stageY;
+				// make sure to redraw the stage to show the change:
+				stage.update();   
+			});
+			
+			stage.update();
+		}
+	</script>
+</head>
+<body onload="init();">
+	<canvas id="demoCanvas" width="500" height="200">
+		alternate content
+	</canvas>
+</body>
+</html>
