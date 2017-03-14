@@ -7,9 +7,11 @@
         console.log();
         backMotionFrame=setInterval(function(){
             console.log(objectCnt);
-            $( "#testTarget" ).css({ "left": "-=15px" });
-            $("#title").css({ "left": "-=15px" });
-            objectCnt++;
+            if(objectCnt<232){
+                $( "#testTarget" ).css({ "left": "-=15px" });
+                $("#title").css({ "left": "-=15px" });
+                objectCnt++;
+            }
         },33);
     //
     }).mouseup(function(){
