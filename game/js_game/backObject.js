@@ -7,7 +7,7 @@
         console.log();
         backMotionFrame=setInterval(function(){
             console.log(objectCnt);
-            if(objectCnt<232){
+            if(objectCnt<400){
                 $( "#testTarget" ).css({ "left": "-=15px" });
                 $("#title").css({ "left": "-=15px" });
                 objectCnt++;
