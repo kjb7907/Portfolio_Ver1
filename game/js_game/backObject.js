@@ -6,12 +6,9 @@
     $('#run').mousedown(function(){
         console.log();
         backMotionFrame=setInterval(function(){
-            console.log(objectCnt);
-            if(objectCnt<400){
-                $( "#testTarget" ).css({ "left": "-=15px" });
-                $("#title").css({ "left": "-=15px" });
-                objectCnt++;
-            }
+            $( "#testTarget" ).css({ "left": "-=15px" });
+            $("#title").css({ "left": "-=15px" });
+            objectCnt++;
         },33);
     //
     }).mouseup(function(){
@@ -25,7 +22,6 @@
         }     
         backMotionFrame=setInterval(function(){
             if(objectCnt>0){
-                console.log(objectCnt);
                 $( "#testTarget" ).css({ "left": "+=15px" });
                 $( "#title" ).css({ "left": "+=15px" });
                 objectCnt--;            
