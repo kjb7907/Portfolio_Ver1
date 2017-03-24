@@ -1,7 +1,8 @@
  var backMotion = function(){
     var backMotionFrame;
     var objectCnt=0;
-    var backWidth=($("#testTarget").width()/500);
+    var backWidth=($("#testTarget").width()/500.0);
+    console.log($("#testTarget").width()+' backwidth:'+backWidth);
 
     //전진
     $('#run').mousedown(function(){
