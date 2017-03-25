@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <script src="./js_game/backObject.js"></script> 
     <script src="./js_game/beelzemon.js"></script>
     <script src="./js_game/beelzemon_ride.js"></script>
-    <script src="./js_game/backObject.js"></script>
 
     <style type="text/css"> html, body { height:100%; overflow:hidden } .h-div {height:96%; border:3px #f99 solid} </style>
 
@@ -34,7 +34,13 @@
 
   <script>
 
+  var frameWidth; //1프레임당 이동거리
+  var maxFrame; //최대이동범위
+
   $(document).ready(function(){
+
+    frameWidth=($("#testTarget").width()/800.0); //기본 1프레임당 이동거리 세팅
+    maxFrame=$("#testTarget").width();
 
     //대기상태
     motionFrame=setInterval(function(){
@@ -49,12 +55,14 @@
     var user = beelzemonMotion();
     
 
-    $('#ride').click(function(){
+    $('#ride').click(function(){ //라이딩 폼
+      setFrameWidth(($("#testTarget").width()/300.0));
       clearInterval(motionFrame);
       user = beelzemonRideTransMotion();
       user = beelzemonRideMotion();
     });
-    $('#normal').click(function(){
+    $('#normal').click(function(){ //노말 폼
+      setFrameWidth(($("#testTarget").width()/800.0));   
       clearInterval(motionFrame);
       user = beelzemonTransMotion();
       user = beelzemonMotion();

@@ -10,7 +10,6 @@ var status;
 var beelzemonRideTransMotion =
 function(){
   //라이딩폼 체인지
-    backWidth=($("#testTarget").width()/500.0);
     clearInterval(motionFrame)
     motionFrame=setInterval(function(){
       $('#target').attr('src','./img_game/beelzemon_ride/trans'+beelzemonRideTransCount+'.png');
