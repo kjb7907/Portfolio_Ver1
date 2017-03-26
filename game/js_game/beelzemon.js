@@ -15,7 +15,7 @@ function(){
       $('#target').attr('src','./img_game/beelzemon_ride/trans'+beelzemonTransCount+'.png');
       beelzemonTransCount--;
       if(beelzemonTransCount==0){clearInterval(motionFrame);beelzemonTransCount=8;}
-    },100);
+    },70);
 }
 
 var beelzemonMotion =
