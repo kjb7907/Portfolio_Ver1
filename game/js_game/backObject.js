@@ -2,10 +2,13 @@
  var backMotion = function(){
     var backMotionFrame; //백그라운드 모션 담기는 변수
     var objectCnt=0; //백그라운드 이동거리 카운터
-    frameWidth=($("#testTarget").width()/800.0); //기본 1프레임당 이동거리 세팅
-    maxFrame=$("#testTarget").width()/1.2;   
-    console.log('1프레임당 이동거리 : '+frameWidth+' 최대이동거리 : '+maxFrame);
 
+    window.onload = function(){
+        frameWidth=($("#testTarget").width()/800.0); //기본 1프레임당 이동거리 세팅
+        maxFrame=$("#testTarget").width()/1.2;   
+        console.log('1프레임당 이동거리 : '+frameWidth+' 최대이동거리 : '+maxFrame);        
+    }
+    
     //전진
     $('#run').mousedown(function(){
         console.log();
