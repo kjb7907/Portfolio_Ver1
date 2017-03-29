@@ -6,7 +6,6 @@ var beelzemonRideBackCount=1;  // back 프레임카운터
 var beelzemonRideTransCount=1;  // trans 프레임카운터
 var status;
 
-
 var beelzemonRideTransMotion =
 function(){
   //라이딩폼 체인지
@@ -21,7 +20,7 @@ function(){
 
 var  beelzemonRideMotion =
 function(){
-
+    var keyCount =0; //키보드 카운터
 
     //대기상태
     $('#run').mouseup(function(){
@@ -32,7 +31,7 @@ function(){
         if(beelzemonRideStandCount>5){beelzemonRideStandCount=1}
       },200);
 
-    //달리기
+    //전진
     }).mousedown(function(){
       clearInterval(motionFrame);
       motionFrame = setInterval(function(){
@@ -41,7 +40,7 @@ function(){
         if(beelzemonRideRunCount>5){beelzemonRideRunCount=1}
       },100);
     });
-    //뒤로가기
+    //후진
     $('#back').mousedown(function(){
       clearInterval(motionFrame);
       status='back';
@@ -51,7 +50,7 @@ function(){
         if(beelzemonRideBackCount>5){beelzemonRideBackCount=1}
       },100)
     })
-    //뒤로간후 스탠딩상태
+    //후진 종료
     .mouseup(function(){
       if(status=='back'){
         clearInterval(motionFrame);
@@ -62,6 +61,36 @@ function(){
         },200);
       }
     });
+
+    //키보드 이벤트
+    $("html").keydown(function(e) { //전진
+        if(keyCount==0){
+            if(e.keyCode == 39){
+              clearInterval(motionFrame);
+              motionFrame = setInterval(function(){
+                $('#target').attr('src','./img_game/beelzemon_ride/run'+beelzemonRideRunCount+'.png');
+                beelzemonRideRunCount++;
+                if(beelzemonRideRunCount>5){beelzemonRideRunCount=1}
+              },100);   
+            }else if(e.keyCode == 37){ //후진
+              clearInterval(motionFrame);
+              motionFrame = setInterval(function(){
+                $('#target').attr('src','./img_game/beelzemon_ride/back'+beelzemonRideBackCount+'.png');
+                beelzemonRideBackCount++;
+                if(beelzemonRideBackCount>5){beelzemonRideBackCount=1}
+              },100)
+            }
+            keyCount=1;
+        }
+    }).keyup(function(e) { //전진,후진 종료
+        keyCount=0;
+        clearInterval(motionFrame);
+        motionFrame = setInterval(function(){
+          $('#target').attr('src','./img_game/beelzemon_ride/stand'+beelzemonRideStandCount+'.png');
+          beelzemonRideStandCount++;
+          if(beelzemonRideStandCount>5){beelzemonRideStandCount=1}
+        },200);      
+    });   
 
 }
 
