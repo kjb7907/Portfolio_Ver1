@@ -62,7 +62,7 @@ function(){
     });
 
     //키보드 이벤트
-    $("html").keydown(function(e) {
+    $(document).keydown(function(e) {
         if(keyCount==0){
             if(e.keyCode == 39){ //전진
               clearInterval(motionFrame);
