@@ -11,8 +11,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="./js_game/backObject.js"></script> 
-    <script src="./js_game/beelzemon.js"></script>
-    <script src="./js_game/beelzemon_ride.js"></script>
+
+    <script src="./js_game/hitokage.js"></script>
+    <script src="./js_game/charizard.js"></script>   
+
+    <script src="./js_game/squirtle.js"></script>
+    <script src="./js_game/blastoise.js"></script>
+
+    <script src="./js_game/bulbasaur.js"></script>
+    <script src="./js_game/venusaur.js"></script>
 
     <style type="text/css"> html, body { height:100%; overflow:hidden } .h-div {height:96%; border:3px #f99 solid} </style>
 
@@ -42,31 +49,47 @@
   $(document).ready(function(){
 
 
-    //대기상태
+    //시작 대기상태
     motionFrame=setInterval(function(){
-        $('#target').attr('src','./img_game/beelzemon/stand'+beelzemonStandCount+'.png');
-        beelzemonStandCount++;
-        if(beelzemonStandCount>5){beelzemonStandCount=1}      
-    },200);
+        $('#target').attr('src','./img_game/hitokage/normal_right_'+hitokageStandCount+'.png');
+        hitokageStandCount++;
+        if(hitokageStandCount>3){hitokageStandCount=1}      
+    },300);
 
     $( "#title" ).animate({ "top": "+=20%" }, 1000 );
 
     var back = backMotion();
-    var user = beelzemonMotion();
+    var user = hitokageMotion();
     
+    //리자몽
+    $('#charizard').click(function(){ 
+      charizardChange();
+    });
+    
+    //파이리
+    $('#hitokage').click(function(){ 
+      hitokageChange();
+    });
 
-    $('#ride').click(function(){ //라이딩 폼
-      setFrameWidth(($("#testTarget").width()/300.0));
-      clearInterval(motionFrame);
-      user = beelzemonRideTransMotion();
-      user = beelzemonRideMotion();
+    //꼬부기
+    $('#squirtle').click(function(){ 
+      squirtleChange();
     });
-    $('#normal').click(function(){ //노말 폼
-      setFrameWidth(($("#testTarget").width()/800.0));   
-      clearInterval(motionFrame);
-      user = beelzemonTransMotion();
-      user = beelzemonMotion();
-    });
+
+    //거북왕
+    $('#blastoise').click(function(){ 
+      blastoiseChange();
+    });    
+
+    //이상해씨
+    $('#bulbasaur').click(function(){ 
+      bulbasaurChange();
+    });     
+
+    //이상해꽃
+    $('#venusaur').click(function(){ 
+      venusaurChange();
+    });            
 
 
 
@@ -77,15 +100,20 @@
 
       <div style="position:absolute;width:100%;height:100%;text-align:center;">
         <img src="./img_game/title.png" id="title" style="position: absolute;;z-index:1;left:35%;height:40%">      
-        <img src="./img_game/beelzemon/stand1.png" id="target" style="position:relative;z-index:1;top:60%;height:40%;">
+        <img src="./img_game/hitokage/stand1.png" id="target" style="position:relative;z-index:1;top:60%;height:40%;">
       </div>
 
       <div style="position:absolute;width:100%;height:100%;">        
         <img src="./img_game/background/test.png" id="testTarget" style="position: absolute;height:100%">
       </div>      
 
-      <img src="./img_game/normal.png" id="normal" style="position:absolute;z-index:3;top:75%;left:1%;width:60px;">
-      <img src="./img_game/ride.png" id="ride" style="position:absolute;z-index:3;top:85%;left:1%;width:60px;">
+       
+      <img src="./img_game/hitokage.png" id="hitokage" style="position:absolute;z-index:3;top:0%;left:1%;width:70px;">
+      <img src="./img_game/charizard.png" id="charizard" style="position:absolute;z-index:3;top:10%;left:1%;width:70px;">
+      <img src="./img_game/squirtle.png" id="squirtle" style="position:absolute;z-index:3;top:20%;left:1%;width:70px;">
+      <img src="./img_game/blastoise.png" id="blastoise" style="position:absolute;z-index:3;top:30%;left:1%;width:70px;">
+      <img src="./img_game/bulbasaur.png" id="bulbasaur" style="position:absolute;z-index:3;top:40%;left:1%;width:70px;">
+      <img src="./img_game/venusaur.png" id="venusaur" style="position:absolute;z-index:3;top:50%;left:1%;width:70px;">            
 
       <div id="back"style="width:50%;height:100%;display:inline-block;position:absolute;right:50%;z-index:2;"></div>
       <div id="run"style="width:50%;height:100%;display:inline-block;position:absolute;left:50%;z-index:2;"></div>

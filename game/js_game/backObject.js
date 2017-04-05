@@ -6,7 +6,7 @@
 
     window.onload = function(){
         frameWidth=($("#testTarget").width()/800.0); //기본 1프레임당 이동거리 세팅
-        maxFrame=$("#testTarget").width()/1.2;   
+        maxFrame=$("#testTarget").width()/1.25;   
         console.log('1프레임당 이동거리 : '+frameWidth+' 최대이동거리 : '+maxFrame);        
     }
     
